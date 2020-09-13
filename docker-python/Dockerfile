@@ -1,4 +1,4 @@
-FROM jenkins/jnlp-agent-python:alpine
+FROM jenkins/jnlp-agent-python
 
 USER root
 
