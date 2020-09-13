@@ -10,6 +10,8 @@ node('docker') {
     }
 
     stage('Push docker-python image') {
-        dockerPython.push("latest")
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            dockerPython.push("latest")
+        }
     }
 }
