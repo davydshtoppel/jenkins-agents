@@ -1,10 +1,7 @@
-FROM jenkins/jnlp-agent-docker as jnlp
+FROM jenkins/jnlp-agent-docker
 
-FROM python:alpine
+USER root
 
-RUN apk -U add openjdk8-jre
+RUN apk update && apk add python3 py3-pip
 
-COPY --from=jnlp /usr/local/bin/jenkins-agent /usr/local/bin/jenkins-agent
-COPY --from=jnlp /usr/share/jenkins/agent.jar /usr/share/jenkins/agent.jar
-
-ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
+USER jenkins
